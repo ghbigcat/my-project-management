@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2026-07-29
+
+### Added
+
+- **跨平台支持**：新增 Claude Code、Codex CLI、OpenClaw 三大平台适配
+- **AGENTS.md**：Codex CLI 兼容指令文件（<150 行，自动读取）
+- **Claude Code Skill**：`.claude/skills/my-project-management/` 目录含适配 frontmatter 的 SKILL.md + references
+- **Claude Code Slash 命令**：5 个命令（`/pm-req`、`/pm-risk`、`/pm-progress`、`/pm-resource`、`/pm-meeting`）
+- **OpenClaw 适配**：`openclaw/` 目录含 SKILL.md、references、INSTALL.md 安装指南
+- **多平台安装指南**：README.md 新增 4 平台安装方式对比表和详细步骤
+
+### Changed
+
+- README.md 标题更新为"跨平台 AI 项目管理技能套件"
+- 新增 Claude Code、Codex、OpenClaw 兼容性徽章
+- 目录结构更新，展示完整多平台文件布局
+
 ## [1.1.0] - 2026-07-27
 
 ### Added

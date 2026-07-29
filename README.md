@@ -1,11 +1,14 @@
-# 我的项目管理 — WorkBuddy Skill
+# 我的项目管理 — 跨平台 AI 项目管理技能套件
 
 > 基于 **PMBOK Guide 第八版（2024）** 的 AI 项目管理技能套件，覆盖项目全生命周期的五大能力。
 > 以**价值交付**为核心，以**非规定性裁剪**为方法论，以 **AI 三级增强**为执行策略。
 
 [![PMBOK](https://img.shields.io/badge/PMBOK-8th%20Edition-blue)](https://www.pmi.org/standards/pmbok)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![WorkBuddy Skill](https://img.shields.io/badge/WorkBuddy-Skill-orange)](https://www.codebuddy.ai)
+[![WorkBuddy](https://img.shields.io/badge/WorkBuddy-Skill-orange)](https://www.codebuddy.ai)
+[![Claude Code](https://img.shields.io/badge/Claude%20Code-compatible-purple)](https://claude.com)
+[![Codex](https://img.shields.io/badge/Codex-AGENTS.md-black)](https://developers.openai.com/codex)
+[![OpenClaw](https://img.shields.io/badge/OpenClaw-compatible-red)](https://openclaw.ai)
 
 ---
 
@@ -14,6 +17,10 @@
 - [功能特性](#功能特性)
 - [PMBOK 第八版对齐](#pmbok-第八版对齐)
 - [安装方式](#安装方式)
+  - [WorkBuddy](#方式一workbuddy-推荐)
+  - [Claude Code](#方式二claude-code)
+  - [Codex CLI](#方式三codex-cli)
+  - [OpenClaw](#方式四openclaw)
 - [使用方法](#使用方法)
 - [能力总览](#能力总览)
 - [目录结构](#目录结构)
@@ -74,34 +81,121 @@
 
 ## 安装方式
 
-### 方式一：直接安装 .skill 文件（推荐）
+本技能套件支持 4 大平台，一次下载，多平台使用。
+
+### 平台兼容性总览
+
+| 平台 | 安装方式 | 格式 | 位置 |
+|------|----------|------|------|
+| **WorkBuddy** | .skill 导入 / 手动复制 | SKILL.md + references/ | `~/.workbuddy/skills/` |
+| **Claude Code** | 复制 .claude/ 目录 | .claude/skills/ + .claude/commands/ | 项目根目录或 `~/.claude/` |
+| **Codex CLI** | AGENTS.md 自动读取 | AGENTS.md | 仓库根目录或 `~/.codex/` |
+| **OpenClaw** | ClawHub CLI / 手动复制 | SKILL.md + references/ | `~/.openclaw/skills/` |
+
+---
+
+### 方式一：WorkBuddy（推荐）
+
+#### A. 直接安装 .skill 文件
 
 1. 下载本仓库中的 `my-project-management.skill` 文件
 2. 在 WorkBuddy 中打开 Skill 管理页面
 3. 导入 `.skill` 文件，系统会自动触发安全审计
 4. 审计通过后即可使用
 
-### 方式二：手动安装（从源码）
+#### B. 手动安装（从源码）
 
-1. 克隆本仓库：
-   ```bash
-   git clone https://github.com/your-username/my-project-management.git
-   ```
-2. 将 `SKILL.md` 和 `references/` 文件夹复制到 WorkBuddy skills 目录：
-   ```bash
-   # Windows
-   cp -r my-project-management/SKILL.md ~/.workbuddy/skills/my-project-management/
-   cp -r my-project-management/references/ ~/.workbuddy/skills/my-project-management/
+```bash
+git clone https://github.com/ghbigcat/my-project-management.git
+mkdir -p ~/.workbuddy/skills/my-project-management
+cp my-project-management/SKILL.md ~/.workbuddy/skills/my-project-management/
+cp -r my-project-management/references/ ~/.workbuddy/skills/my-project-management/
+```
 
-   # macOS / Linux
-   cp -r my-project-management/SKILL.md ~/.workbuddy/skills/my-project-management/
-   cp -r my-project-management/references/ ~/.workbuddy/skills/my-project-management/
-   ```
-3. 重启 WorkBuddy，skill 自动加载
+重启 WorkBuddy，skill 自动加载。
+
+---
+
+### 方式二：Claude Code
+
+Claude Code 支持两种方式：Skill 自动激活 + Slash 命令手动调用。
+
+#### A. 安装 Skill（自动激活）
+
+```bash
+git clone https://github.com/ghbigcat/my-project-management.git
+
+# 项目级安装（团队共享）
+cp -r my-project-management/.claude/ .claude/
+
+# 或全局安装（个人使用）
+cp -r my-project-management/.claude/skills/ ~/.claude/skills/
+```
+
+安装后 Claude Code 在检测到项目管理相关请求时自动激活 skill。
+
+#### B. Slash 命令（手动调用）
+
+本仓库提供 5 个 slash 命令，复制 `.claude/commands/` 到项目后可用：
+
+| 命令 | 功能 | 示例 |
+|------|------|------|
+| `/pm-req` | 拆解需求为 WBS | `/pm-req PSP患者服务项目` |
+| `/pm-risk` | 评估项目风险 | `/pm-risk 患者服务项目` |
+| `/pm-progress` | 跟踪进度与偏差 | `/pm-progress 项目周报数据` |
+| `/pm-resource` | 优化资源分配 | `/pm-resource 团队5人` |
+| `/pm-meeting` | 生成会议纪要 | `/pm-meeting 站会记录` |
+
+---
+
+### 方式三：Codex CLI
+
+Codex 自动读取仓库根目录的 `AGENTS.md` 文件。
+
+#### A. 项目级安装
+
+```bash
+git clone https://github.com/ghbigcat/my-project-management.git
+cd my-project-management
+# Codex 启动时自动读取 ./AGENTS.md
+codex "帮我拆解需求"
+```
+
+#### B. 全局安装
+
+```bash
+cp my-project-management/AGENTS.md ~/.codex/AGENTS.md
+cp -r my-project-management/references/ ~/.codex/references/
+# 所有项目中 Codex 自动加载
+```
+
+> Codex 的 AGENTS.md 限制 32KB，本文件已控制在限制内。支持嵌套覆盖：子目录可放置额外 AGENTS.override.md。
+
+---
+
+### 方式四：OpenClaw
+
+详见 [`openclaw/INSTALL.md`](openclaw/INSTALL.md)。
+
+```bash
+# ClawHub CLI 安装
+npx clawhub@latest install my-project-management
+
+# 或手动安装
+git clone https://github.com/ghbigcat/my-project-management.git
+mkdir -p ~/.openclaw/skills/my-project-management
+cp my-project-management/openclaw/SKILL.md ~/.openclaw/skills/my-project-management/
+cp -r my-project-management/openclaw/references/ ~/.openclaw/skills/my-project-management/
+openclaw restart
+```
+
+可配合本地 LLM（Ollama + Llama 3.1）使用，详见安装指南。
+
+---
 
 ### 安装验证
 
-安装后在 WorkBuddy 对话中输入以下任一触发词，若 skill 被激活则安装成功：
+安装后在对话中输入以下任一触发词，若 skill 被激活则安装成功：
 
 | 触发词 | 预期能力 |
 |--------|---------|
@@ -117,7 +211,7 @@
 
 ### 基本用法
 
-在 WorkBuddy 对话中直接说出需求，skill 会根据意图自动路由到对应能力：
+在 AI 对话中直接说出需求，skill 会根据意图自动路由到对应能力（Claude Code 也可用 slash 命令手动触发）：
 
 ```
 用户：帮我拆解 PSP 患者服务项目的需求
@@ -183,19 +277,34 @@ Skill：请确认项目类型（预测型/适应型/混合型），以便调整�
 
 ```
 my-project-management-git/
-├── README.md                              # 本文件
+├── README.md                              # 本文件（多平台安装指南）
 ├── LICENSE                                 # MIT 许可证
 ├── .gitignore
 ├── CHANGELOG.md                            # 版本历史
-├── my-project-management.skill            # 打包文件（直接安装）
-├── SKILL.md                                # 主文件（路由+规范+PMBOK对齐）
-└── references/
-    ├── req-decomposer.md                   # 需求拆解助手
-    ├── risk-radar.md                       # 风险雷达
-    ├── progress-manager.md                 # 进度管家
-    ├── resource-optimizer.md               # 资源优化器
-    ├── meeting-minutes.md                  # 会议纪要大师
-    └── tailoring-guide.md                  # 裁剪指南
+├── AGENTS.md                               # Codex CLI 指令文件
+├── my-project-management.skill            # WorkBuddy 打包文件
+├── SKILL.md                                # WorkBuddy 主文件（路由+规范+PMBOK对齐）
+├── references/                             # WorkBuddy 能力文件
+│   ├── req-decomposer.md                   # 需求拆解助手
+│   ├── risk-radar.md                       # 风险雷达
+│   ├── progress-manager.md                 # 进度管家
+│   ├── resource-optimizer.md               # 资源优化器
+│   ├── meeting-minutes.md                  # 会议纪要大师
+│   └── tailoring-guide.md                  # 裁剪指南
+├── .claude/                                # Claude Code 格式
+│   ├── skills/my-project-management/       # Skill（自动激活）
+│   │   ├── SKILL.md
+│   │   └── references/
+│   └── commands/                           # Slash 命令（手动触发）
+│       ├── pm-req.md                       # /pm-req
+│       ├── pm-risk.md                      # /pm-risk
+│       ├── pm-progress.md                  # /pm-progress
+│       ├── pm-resource.md                  # /pm-resource
+│       └── pm-meeting.md                   # /pm-meeting
+└── openclaw/                               # OpenClaw 格式
+    ├── INSTALL.md                          # 安装指南
+    ├── SKILL.md
+    └── references/
 ```
 
 ---
@@ -233,6 +342,7 @@ PMBOK 第八版强调"非规定性"——过程和实践应根据项目特征裁
 
 | 版本 | 日期 | 主要变更 |
 |------|------|----------|
+| 1.2.0 | 2026-07-29 | 跨平台支持：新增 Claude Code、Codex CLI、OpenClaw 适配 |
 | 1.1.0 | 2026-07-27 | PMBOK 第八版全量更新（6 原则 + 7 绩效域 + 裁剪 + AI 增强 + 可持续发展） |
 | 1.0.0 | 2026-07-27 | 初始版本，基于 PMBOK 第六/七版，5 大能力套件 |
 
