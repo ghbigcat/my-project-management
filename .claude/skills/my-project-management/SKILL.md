@@ -1,5 +1,5 @@
 ---
-description: "AI 项目管理技能套件 — 基于 PMBOK 第八版，覆盖需求拆解、风险评估、进度管控、资源优化、会议纪要。当用户需要拆解需求(WBS)、评估风险、跟踪进度、优化资源分配或生成会议纪要时自动激活。"
+description: "AI 项目管理技能套件 — 基于 PMBOK 第八版，覆盖需求拆解、风险评估、进度管控、资源优化、会议纪要、绩效度量、过程观测七大能力。当用户需要拆解需求(WBS)、评估风险、跟踪进度、优化资源分配、生成会议纪要、设计指标与 EVM 绩效评估、或监控项目状态并触发预警时自动激活。"
 ---
 
 # 我的项目管理
@@ -15,11 +15,17 @@ description: "AI 项目管理技能套件 — 基于 PMBOK 第八版，覆盖需
 | 拆解/分析需求/WBS | 需求拆解助手 | references/req-decomposer.md |
 | 分配/优化资源/负载 | 资源优化器 | references/resource-optimizer.md |
 | 进度/跟踪/偏差/延期 | 进度管家 | references/progress-manager.md |
-| 风险/预警/应对 | 风险雷达 | references/risk-radar.md |
+| 风险/预警/应对/矩阵 | 风险雷达 | references/risk-radar.md |
+| 绩效/度量/KPI/指标定义/挣值/EVM/验收/测试用例 | 绩效度量器 | references/evaluation.md |
+| 监控/状态报告/偏差预警/告警/观测/趋势 | 过程观测器 | references/observability.md |
 | 会议/纪要/记录会议 | 会议纪要大师 | references/meeting-minutes.md |
 | 裁剪/适配/定制方法 | 裁剪指南 | references/tailoring-guide.md |
 
 多能力请求按聚焦领域顺序（Initiating → Planning → Executing → Monitoring → Closing）依次执行。
+
+**绩效度量器与过程观测器的分工**：前者回答"这一期做得够不够好"（周期性、结论导向）；后者回答"现在有没有偏离，要不要报警"（持续性、预警导向）。二者共用同一套指标定义卡口径，不得各自定义。
+
+**触发词歧义消解**：单独出现"评估"时按宾语判定 —— 评估**风险** → 风险雷达；评估**绩效/验收** → 绩效度量器；评估**状态/趋势** → 过程观测器。
 
 ## 统一输出规范
 

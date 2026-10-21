@@ -1,13 +1,16 @@
 ---
 name: my-project-management
-description: AI 项目管理技能套件，覆盖项目全生命周期的五大能力：需求拆解、风险评估、进度管控、资源优化、会议纪要。
+description: AI 项目管理技能套件，覆盖项目全生命周期的七大能力：需求拆解、风险评估、进度管控、资源优化、会议纪要、绩效度量、过程观测。
   当用户需要以下操作时触发：(1) 拆解模糊需求为可执行任务清单（"帮我拆解需求"、"分析需求"、"WBS"）； (2)
   评估项目风险并生成应对策略（"评估项目风险"、"风险预警"、"风险矩阵"）； (3) 跟踪项目进度并分析偏差（"跟踪进度"、"进度监控"、"进度偏差"）；
   (4) 优化人员任务分配与负载均衡（"分配任务"、"优化资源"、"负载均衡"）； (5)
-  将会议录音/文字/笔记转为结构化纪要（"记录会议"、"生成纪要"、"会议总结"）。 也适用于项目管理整体规划、PMBOK
+  将会议录音/文字/笔记转为结构化纪要（"记录会议"、"生成纪要"、"会议总结"）； (6)
+  设计指标体系、计算 EVM/挣值、出具绩效评估与验收结论（"评估项目绩效"、"KPI 设计"、"指标定义"、"挣值"、"EVM"、"验收标准"、"测试用例"）；
+  (7) 持续监控项目运行状态、判定偏差级别并触发预警、生成分层状态报告（"监控项目"、"状态报告"、"偏差预警"、"告警"、"观测"）。
+  也适用于项目管理整体规划、PMBOK
   绩效域落地、项目计划制定（含任务、标准、截止日期）等场景。 基于 PMBOK 第八版（6 条原则 + 7 绩效域 + 5 聚焦领域 + 裁剪 + AI 增强
   + 可持续发展）。
-disable: true
+disable-model-invocation: false
 ---
 
 # 我的项目管理
@@ -34,24 +37,24 @@ disable: true
 | Initiating（启动） | 需求拆解助手 | 非严格顺序，可通过非正式实践满足 |
 | Planning（规划） | 资源优化器、风险雷达 | 规划活动可迭代，非一次性完成 |
 | Executing（执行） | 进度管家 | 执行中持续跟踪与调整 |
-| Monitoring & Controlling（监控） | 进度管家、风险雷达 | 贯穿项目全周期，非独立阶段 |
+| Monitoring & Controlling（监控） | 进度管家、风险雷达、绩效度量器、过程观测器 | 贯穿项目全周期，非独立阶段 |
 | Closing（收尾） | 会议纪要大师 | 收尾复盘，经验沉淀 |
 
 ### 7 个绩效域（Performance Domains，替代第六版知识领域）
 
 | 绩效域 | 说明 | 对应能力 |
 |--------|------|---------|
-| Governance（治理） | 项目治理结构、决策权限、合规性 | 会议纪要大师（决策记录） |
+| Governance（治理） | 项目治理结构、决策权限、合规性 | 会议纪要大师（决策记录）、过程观测器（合规监控与预警升级）、绩效度量器（评估结论与验收决策） |
 | Scope（范围） | 需求收集、范围定义、WBS | 需求拆解助手 |
 | Schedule（进度） | 活动定义、排序、持续时间估算、进度控制 | 进度管家 |
-| Finance（财务） | 成本估算、预算、EVM 挣值管理 | 进度管家 |
+| Finance（财务） | 成本估算、预算、EVM 挣值管理 | 进度管家、绩效度量器（EVM 偏差计算与判定） |
 | Stakeholders（相关方） | 相关方识别、参与评估、沟通管理 | 会议纪要大师 |
 | Resources（资源） | 资源获取、团队建设、资源优化 | 资源优化器 |
 | Risk（风险） | 风险识别、分析、应对规划 | 风险雷达 |
 
 ## 能力总览
 
-本技能覆盖项目管理全生命周期，共 5 大能力，按聚焦领域排列：
+本技能覆盖项目管理全生命周期，共 7 大能力，按聚焦领域排列：
 
 | 聚焦领域 | 能力 | 触发词 | Reference 文件 |
 |----------|------|--------|---------------|
@@ -59,7 +62,11 @@ disable: true
 | Planning | 资源优化器 | "分配任务"、"优化资源"、"负载均衡" | [resource-optimizer.md](references/resource-optimizer.md) |
 | Executing | 进度管家 | "跟踪进度"、"进度监控"、"进度偏差" | [progress-manager.md](references/progress-manager.md) |
 | Monitoring & Controlling | 风险雷达 | "评估风险"、"风险预警"、"风险矩阵" | [risk-radar.md](references/risk-radar.md) |
+| Monitoring & Controlling | 绩效度量器 | "评估绩效"、"KPI 设计"、"指标定义"、"挣值/EVM"、"验收标准"、"测试用例" | [evaluation.md](references/evaluation.md) |
+| Monitoring & Controlling | 过程观测器 | "监控项目"、"状态报告"、"偏差预警"、"告警"、"观测/趋势" | [observability.md](references/observability.md) |
 | Closing | 会议纪要大师 | "记录会议"、"生成纪要"、"会议总结" | [meeting-minutes.md](references/meeting-minutes.md) |
+
+> **两者的分工**：绩效度量器回答"这一期做得够不够好"（周期性、结论导向）；过程观测器回答"现在有没有偏离，要不要报警"（持续性、预警导向）。二者共用同一套指标定义卡口径，不得各自定义。
 
 ## 路由逻辑
 
@@ -70,11 +77,19 @@ disable: true
   ├─ 包含"拆解/分析需求/WBS" → 读 references/req-decomposer.md
   ├─ 包含"分配/优化资源/负载" → 读 references/resource-optimizer.md
   ├─ 包含"进度/跟踪/偏差/延期" → 读 references/progress-manager.md
-  ├─ 包含"风险/预警/应对" → 读 references/risk-radar.md
+  ├─ 包含"风险/预警/应对/矩阵" → 读 references/risk-radar.md
   ├─ 包含"会议/纪要/记录会议" → 读 references/meeting-minutes.md
+  ├─ 包含"绩效/度量/KPI/指标定义/挣值/EVM/验收/测试用例/评估结论" → 读 references/evaluation.md
+  ├─ 包含"监控/状态报告/偏差预警/告警/观测/趋势/趋势恶化" → 读 references/observability.md
   ├─ 包含"裁剪/适配/定制方法" → 读 references/tailoring-guide.md
   └─ 跨阶段/综合管理 → 先判断当前聚焦领域，再路由到对应能力
 ```
+
+**触发词歧义消解**（同时命中多个能力时按以下优先级判定）：
+- "风险 / 应对 / 矩阵 / 概率影响" → 风险雷达
+- "指标 / KPI / 挣值 / 验收 / 测试用例 / 结论" → 绩效度量器
+- "监控 / 告警 / 状态报告 / 趋势 / 红黄绿" → 过程观测器
+- 单独出现"评估"字样时，须结合宾语判断：评估**风险** → 风险雷达；评估**绩效 / 验收** → 绩效度量器；评估**状态 / 趋势** → 过程观测器
 
 若用户请求涉及多个能力（如"拆解需求并分配任务"），按聚焦领域顺序依次读取并执行。
 
@@ -151,3 +166,5 @@ PMBOK 第八版强调"非规定性"——过程和实践应根据项目特征裁
 | 进度管家 | Schedule, Finance | Executing, Monitoring & Controlling | 聚焦价值、将质量融入过程 |
 | 风险雷达 | Risk | Planning, Monitoring & Controlling | 采用全局视角、融入可持续发展 |
 | 会议纪要大师 | Governance, Stakeholders | Closing（也贯穿全周期） | 成为负责任的领导者、建设赋能文化 |
+| 绩效度量器 | Finance, Governance | Monitoring & Controlling | 聚焦价值、将质量融入过程和交付物、采用全局视角 |
+| 过程观测器 | Governance | Monitoring & Controlling | 采用全局视角、成为负责任的领导者、建设赋能文化 |

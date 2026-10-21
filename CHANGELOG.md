@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2026-10-21
+
+### Added
+
+- **绩效度量器**（`references/evaluation.md`）：三层指标体系（价值层/交付层/过程层）+ 指标定义卡 10 字段 + EVM 偏差计算 + 验收标准与 Given-When-Then 测试用例 + 评估结论三级分级（合格/有条件合格/不合格）+ 关键数字双源印证表
+- **过程观测器**（`references/observability.md`）：观测三件套（日志/指标/追踪）+ 数据→信息→报告转化链路 + 绿黄红三档告警与升级路径 + 合规红线单列 + 分层受众报告裁剪（决策层/管理层/执行层）+ 异常闭环台账
+- **服务型项目 EVM 折算规则**：按服务量付费模式下 `EV = 已完成服务量 × 合同单价`，不沿用工程量口径
+- **触发词歧义消解**：同时命中多能力时的判定优先级（"评估"须结合宾语判定）
+- **Claude Code Slash 命令**：新增 `/pm-eval`、`/pm-monitor`，命令总数 5 → 7
+
+### Changed
+
+- 能力数量 5 → 7，SKILL.md / README / AGENTS.md / Claude Code / OpenClaw 五处同步更新
+- 5 个聚焦领域映射与 7 个绩效域映射表补入绩效度量器（Finance, Governance）与过程观测器（Governance）
+- 裁剪指南（`references/tailoring-guide.md`）：新增两能力的裁剪矩阵，快速决策表扩为 8 列
+- 医疗场景边界写入绩效度量器：护理人员仅提供患者服务，不设任何以诊疗结局为口径的指标
+
+
+
 ## [1.2.0] - 2026-07-29
 
 ### Added
