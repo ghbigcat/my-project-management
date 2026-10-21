@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.0] - 2026-10-21
+
+### Added
+
+- **项目群升级路由**：新增边界判定逻辑，检测到项目群层级信号时主动提示并转交 `my-programme-management` 技能
+  - SKILL.md：全平台路由图中新增转交分支 + 完整"升级到项目群"章节（5 类信号 + 转交话术 + 不转交情形）
+  - SKILL.md frontmatter：description 新增边界说明（依据 GB/T 41246-2022 / ISO 21503）
+  - `.claude/skills/my-project-management/SKILL.md`：新增"边界：升级到项目群"章节
+  - `AGENTS.md`：新增"边界：升级到项目群"小节
+
+### Changed
+
+- 明确技能职责边界：本技能仅覆盖**单项目**层级；项目群、多项目统筹、收益管理、组件依赖、项目群治理归属 `my-programme-management`
+
 ## [1.3.0] - 2026-10-21
 
 ### Added
